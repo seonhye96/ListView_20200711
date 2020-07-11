@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import kr.co.tjoeun.listview_20200711.R
 import kr.co.tjoeun.listview_20200711.datas.Student
 
@@ -21,7 +22,19 @@ class StudentAdapter(val mContext:Context, val resId:Int, val mList:List<Student
 //        여기가 실행되는 시점 => tempRow는 null일 가능성이 없다.
         val row  = tempRow!! // 널이 아니야!! 하고 대입
 
+//        row의 내용을 가공해서
+        val nameTxt = row.findViewById<TextView>(R.id.nameTxt) // <>안은 종류
+        val addressTxt = row.findViewById<TextView>(R.id.addressTxt)
+        val ageTxt = row.findViewById<TextView>(R.id.ageTxt)
 
+//        뿌려줄 근거 데이터 가져오기
+        val data = mList[position]
+
+        nameTxt.text = data.name
+        addressTxt.text = data.address
+        ageTxt.text = "${2020-data.birth+1}세"
+
+//        결과로 row를 뿌려주자
         return row
     }
 
