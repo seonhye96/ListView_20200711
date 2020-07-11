@@ -32,7 +32,8 @@ class StudentAdapter(val mContext:Context, val resId:Int, val mList:List<Student
 
         nameTxt.text = data.name
         addressTxt.text = data.address
-        ageTxt.text = "${2020-data.birth+1}세"
+//        ageTxt.text = "${2020-data.birthYear+1}세"
+        ageTxt.text = "${data.getKoreanAge()}세"
 
 //        결과로 row를 뿌려주자
         return row
