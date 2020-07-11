@@ -36,7 +36,21 @@ class MainActivity : AppCompatActivity() {
             val clickedStudent = mStudentList[position]
 
 //            받아온 학생의 이름을 토스트로 띄우기
-            Toast.makeText(this, clickedStudent, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, clickedStudent.name, Toast.LENGTH_SHORT).show()
+
+        }
+
+        studentListView.setOnItemLongClickListener { parent, view, position, id ->
+
+            Toast.makeText(this, "길게누르기", Toast.LENGTH_SHORT).show()
+//            오래 눌린 사람을 목록에서 삭제.
+            mStudentList.removeAt(position)
+
+//            어댑터가 새로고침 하도록
+            mAdapter.notifyDataSetChanged()
+
+//            Boolean 값을 리턴해줘야한다.
+            return@setOnItemLongClickListener true //true : 롱클릭 전용 / false : 롱클릭 전용x. 손을 뗄때 클릭 이벤트도 같이 실행.
 
         }
 
